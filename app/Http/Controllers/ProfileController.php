@@ -10,14 +10,14 @@ class ProfileController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = News::all()->sortByDesc('updated_at');
+        $cond_title = $request->cond_title;
         
-        if (count($posts) > 0) {
-            $headline = $posts->shift();
+        if ($cond_title != '') {
+            $posts = Profile::where('name',$cond_title)->get();
         } else {
-            $headline = null;
+            $posts = Profile::all();
         }
         
-        return view('news.index', ['headline' => $headline, 'posts' => $posts]);
+        return view('profile.index', ['cond_title' => $cond_title, 'posts' => $posts]);
     }
 }

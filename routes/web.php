@@ -27,8 +27,10 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('news/edit', 'Admin\NewsController@edit')->middleware('auth');
     Route::post('news/edit', 'Admin\NewsController@update')->middleware('auth');
     Route::get('news/delete', 'Admin\NewsController@delete')->middleware('auth');
-    Route::get('/', 'NewsController@index');
 });
+
+    Route::get('/', 'NewsController@index');
+
 
 //kadai4
 Route::group(['prefix' => 'admin'], function() {
@@ -38,5 +40,6 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('profile/edit', 'Admin\ProfileController@update')->middleware('auth');
     Route::get('profile', 'Admin\ProfileController@index')->middleware('auth');
     Route::get('profile/delete', 'Admin\ProfileController@delete')->middleware('auth');
-    Route::get('/profile', 'ProfileController@index');
 });
+
+    Route::get('/profile', 'ProfileController@index');
